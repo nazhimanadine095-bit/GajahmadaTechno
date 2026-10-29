@@ -35,27 +35,29 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ===========================
      2. MOBILE MENU TOGGLE
      =========================== */
+  const closeMenu = () => {
+    navMenu?.classList.remove('active');
+    menuToggle?.classList.remove('active');
+    document.body.classList.remove('menu-open');
+    document.body.style.overflow = '';
+  };
+
   menuToggle?.addEventListener('click', () => {
     const isActive = navMenu.classList.toggle('active');
     menuToggle.classList.toggle('active');
+    document.body.classList.toggle('menu-open', isActive);
     document.body.style.overflow = isActive ? 'hidden' : '';
   });
 
-  /* Close mobile menu on nav link click */
-  document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-      navMenu?.classList.remove('active');
-      menuToggle?.classList.remove('active');
-      document.body.style.overflow = '';
-    });
+  /* Close mobile menu on nav link or CTA click */
+  document.querySelectorAll('.nav-link, .nav-cta').forEach(link => {
+    link.addEventListener('click', closeMenu);
   });
 
   /* Close mobile menu on escape key */
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && navMenu?.classList.contains('active')) {
-      navMenu.classList.remove('active');
-      menuToggle?.classList.remove('active');
-      document.body.style.overflow = '';
+      closeMenu();
     }
   });
 

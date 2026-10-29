@@ -115,6 +115,34 @@
       font-weight: 600;
       color: #475569;
     }
+    @media (max-width: 768px) {
+      .portal-nav {
+        padding: 12px 16px;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .portal-container {
+        margin: 16px auto;
+        padding: 0 16px;
+        gap: 16px;
+      }
+      .portal-card {
+        padding: 16px;
+        border-radius: 12px;
+      }
+      .status-step-box {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding: 10px 0;
+        margin: 16px 0;
+      }
+      .status-step-box::before {
+        display: none;
+      }
+      .step-item {
+        min-width: 80px;
+      }
+    }
   </style>
 </head>
 <body class="portal-body">
